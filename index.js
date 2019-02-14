@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use(express.static('front-end/dist'))
 
 app.get('/cica', (req, res) => res.send('Hello Macska!'))
 
