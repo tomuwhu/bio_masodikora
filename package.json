@@ -1,0 +1,22 @@
+{
+  "name": "bio_masodikora",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomuwhu/bio_masodikora.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomuwhu/bio_masodikora/issues"
+  },
+  "homepage": "https://github.com/tomuwhu/bio_masodikora#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
