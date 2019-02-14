@@ -57,11 +57,12 @@ td.betus {
 td.a {
   border: solid 1px #47856d;
   color: #133846;
-  width: 20px;
-  height: 20px;
+  width: 23px;
+  height: 23px;
   text-align: center;
   border-radius: 6px;
   cursor: pointer;
+  box-shadow: 1px 1px 3px rgb(54, 70, 61);
 }
 td.X {
   background-color: #77aaf7af; 
