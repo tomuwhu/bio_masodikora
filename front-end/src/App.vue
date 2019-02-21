@@ -21,7 +21,6 @@
 </template>
 
 <script>
-var vege=false
 export default {
   name: "app",
   data: () => ({
@@ -38,27 +37,35 @@ export default {
   }),
   methods: {
     f(x, y) {
-      this.$set(this.amoba[x], y, (this.v = this.v === "X" ? "O" : "X"));
-      console.log(this.v);
-      [[0, 1], [1, 0], [1, 1], [1, -1]].forEach(vi => {
-        let ax = x + vi[0], ay = y+vi[1], sz = 0;
-        while (this.amoba[ax][ay] === this.v) {
-          ax += vi[0];
-          ay += vi[1];
-          sz++;
-        }
-        ax = x-vi[0]
-        ay = y-vi[1]
-        while (this.amoba[ax][ay] === this.v) {
-          ax -= vi[0];
-          ay -= vi[1];
-          sz++;
-        }
-        if (sz>3) {
-          vege=true
-          window.alert('hu')
-        }
-      });
+      if (this.amoba[x][y] === " ") {
+        this.$set(this.amoba[x], y, (this.v = this.v === "X" ? "O" : "X"));
+        [[0, 1], [1, 0], [1, 1], [1, -1]].forEach(vi => {
+          let ax = x + vi[0],
+            ay = y + vi[1],
+            sz = 0;
+          while (this.amoba[ax][ay] === this.v) {
+            ax += vi[0];
+            ay += vi[1];
+            sz++;
+          }
+          ax = x - vi[0];
+          ay = y - vi[1];
+          while (this.amoba[ax][ay] === this.v) {
+            ax -= vi[0];
+            ay -= vi[1];
+            sz++;
+          }
+          if (sz > 3) {
+            this.amoba = Array(20)
+                          .fill(0)
+                          .map(() =>
+                            Array(20)
+                              .fill(0)
+                              .map(() => " ")
+                          );
+          }
+        });
+      }
     },
     add() {
       this.t.push(this.i1);
