@@ -1,11 +1,6 @@
 <template>
   <div id="app">
-    Szeva
-    <br>
-    <input v-model="i1" @change="add()">
-    <button @click="add()">Katt ide</button>
     <div :id="i" :key="i" v-for="(elem,i) in t" class="cuccos">
-      <hr>
       <table>
         <td class="betus" :key="j" v-for="(betu,j) in elem">{{betu}} - {{betu.toUpperCase()}}</td>
       </table>
@@ -24,7 +19,6 @@
 export default {
   name: "app",
   data: () => ({
-    i1: "",
     t: [],
     v: "X",
     amoba: Array(20)
@@ -38,6 +32,12 @@ export default {
   methods: {
     f(x, y) {
       if (this.amoba[x][y] === " ") {
+        this
+          .axios
+          .post('http://localhost:3000/amoba', {x, y, cica:'kutyuli'})
+          .then( resp => {
+            console.log(resp.data)
+          })
         this.$set(this.amoba[x], y, (this.v = this.v === "X" ? "O" : "X"));
         [[0, 1], [1, 0], [1, 1], [1, -1]].forEach(vi => {
           let ax = x + vi[0],
@@ -57,20 +57,15 @@ export default {
           }
           if (sz > 3) {
             this.amoba = Array(20)
-                          .fill(0)
-                          .map(() =>
-                            Array(20)
-                              .fill(0)
-                              .map(() => " ")
-                          );
+              .fill(0)
+              .map(() =>
+                Array(20)
+                  .fill(0)
+                  .map(() => " ")
+              );
           }
         });
       }
-    },
-    add() {
-      this.t.push(this.i1);
-      this.t = this.t.sort((a, b) => a.localeCompare(b));
-      this.i1 = "";
     }
   }
 };
